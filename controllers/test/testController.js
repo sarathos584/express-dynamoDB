@@ -99,6 +99,7 @@ export const updateUser = async (req, res, next) => {
          email
       };
 
+      // here, we are using a util function instead of the db.update() method from dynamoDB
         updateUserDoc(tableNames.users, user_id, updateValues);
         res.status(200).json({ status: true, message: 'user updated' })          
       }
