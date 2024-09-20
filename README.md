@@ -72,9 +72,9 @@ With these fundamental operations, you’ll gain a solid understanding of how to
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `user_id`      | `string` | **Required**. Id of item to fetch |
-| `first_name`      | `string` | **Required**. Id of item to fetch |
-| `last_name`      | `string` | **Required**. Id of item to fetch |
-| `email`      | `string` | **Required**. Id of item to fetch |
+| `first_name`      | `string` | **Required**. first name of user |
+| `last_name`      | `string` | **Required**. last name of user |
+| `email`      | `string` | **Required**. email of the user |
 
 
 #### Edit user
@@ -86,9 +86,9 @@ With these fundamental operations, you’ll gain a solid understanding of how to
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `user_id`      | `string` | **Required**. Id of item to fetch |
-| `first_name`      | `string` | **Optional**. Id of item to fetch |
-| `last_name`      | `string` | **Optional**. Id of item to fetch |
-| `email`      | `string` | **Optional**. Id of item to fetch |
+| `first_name`      | `string` | **Optional**. first name of user |
+| `last_name`      | `string` | **Optional**. last name of user |
+| `email`      | `string` | **Optional**. email for the user |
 
 
 #### Remove user
