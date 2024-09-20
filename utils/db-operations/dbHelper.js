@@ -1,5 +1,13 @@
 import db from "../../config/database.js";
 
+/**
+ * 
+ * @param {string} tableName - table name in which the operation is taking place
+ * @param {*} primaryKey - unique id for identifying the document to update
+ * @param {*} reqBody - params from request regarding the update
+ * @returns 
+ */
+
 export const updateUserDoc = async (tableName, primaryKey, reqBody) => {
     const params = {
         TableName: tableName,
