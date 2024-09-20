@@ -3,6 +3,7 @@ import HttpError from "../../utils/httpError.js";
 import db from "../../config/database.js";
 import { tableNames } from "../../config/dbTableNames.js";
 import { v4 as uuidv4 } from 'uuid';
+import { updateUserDoc } from "../../utils/db-operations/dbHelper.js";
 
 export const getAllUsers = async (req, res, next) => {
     try {
@@ -47,7 +48,7 @@ export const addNewUser = async (req, res, next) => {
         
         const data = await db.put(params).promise()
         
-        res.status(200).json({ status: true, message: "new user added" })
+        res.status(200).json({ status: true, message: "new user" })
           
       }
     } catch (error) {
@@ -92,17 +93,13 @@ export const updateUser = async (req, res, next) => {
         const { user_id, first_name, last_name, email } = req.body
 
 
-        const params = {
-          TableName: tableNames.users,
-          Item: {
-            user_id,
-            first_name,
-            last_name,
-            email
-          }
+        const updateValues = {
+         first_name,
+         last_name,
+         email
       };
 
-        const data = await db.put(params).promise()
+        updateUserDoc(tableNames.users, user_id, updateValues);
         res.status(200).json({ status: true, message: 'user updated' })          
       }
     } catch (error) {
