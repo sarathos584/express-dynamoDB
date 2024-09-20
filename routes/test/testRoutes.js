@@ -1,21 +1,25 @@
 import { Router } from "express"
-import { addNewUser, deleteUser, getAllUsers, getUserById, testController, updateUser } from "../../controllers/test/testController.js"
+import { addNewUser, deleteUser, getAllUsers, getUserById, updateUser } from "../../controllers/test/testController.js"
+import { check } from "express-validator"
 
 const testRouter = Router()
 
 
-
-testRouter.post('/sample', testController)
-
 testRouter.get('/get-all', getAllUsers)
 
-testRouter.post('/add-user', addNewUser)
+testRouter.post('/add-user',[
+    check('first_name').not().isEmpty(),
+    check('last_name').not().isEmpty(),
+    check('email').not().isEmpty()
+], addNewUser)
 
-testRouter.post('/get-user', getUserById)
+testRouter.post('/get-user', [
+    check('user_id').not().isEmpty()
+], getUserById)
 
-testRouter.patch('/update-user', updateUser)
+testRouter.patch('/update-user', [check('user_id').not().isEmpty()], updateUser)
 
-testRouter.delete('/remove-user', deleteUser)
+testRouter.delete('/remove-user', check('user_id').not().isEmpty(),  deleteUser)
 
 
 export default testRouter
