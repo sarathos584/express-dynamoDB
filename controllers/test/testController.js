@@ -4,23 +4,6 @@ import db from "../../config/database.js";
 import { tableNames } from "../../config/dbTableNames.js";
 import { v4 as uuidv4 } from 'uuid';
 
-
-export const testController = async (req, res, next) => {
-    try {
-      const errors = validationResult(req);
-      if (! errors.isEmpty()) {
-        // return next(new HttpError("Invalid data inputs passed, Please check your data before retry!",422));
-      } else {
-       
-        
-        res.status(200).json({ status: true })
-          
-      }
-    } catch (error) {
-    //   return next(new HttpError("Oops! Process failed, please do contact admin", 500));
-    }
-};
-
 export const getAllUsers = async (req, res, next) => {
     try {
       const errors = validationResult(req);
@@ -51,7 +34,6 @@ export const addNewUser = async (req, res, next) => {
        
         const { first_name, last_name, email } = req.body
 
-
         const params = {
           TableName: tableNames.users,
           Item: {
@@ -64,8 +46,8 @@ export const addNewUser = async (req, res, next) => {
 
         
         const data = await db.put(params).promise()
-        console.log(data)
-        res.status(200).json({ status: true, data })
+        
+        res.status(200).json({ status: true, message: "new user added" })
           
       }
     } catch (error) {
